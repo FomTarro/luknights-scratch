@@ -1,0 +1,24 @@
+{
+  "name": "luknights-scratch",
+  "version": "0.0.0",
+  "description": "for helping the Luknights",
+  "main": "main.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FomTarro/luknights-scratch.git"
+  },
+  "author": "Tom 'Skeletom' Farro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FomTarro/luknights-scratch/issues"
+  },
+  "homepage": "https://github.com/FomTarro/luknights-scratch#readme",
+  "devDependencies": {
+    "csv-parser": "^3.0.0"
+  },
+  "dependencies": {
+    "dotenv": "8.2.0",
+    "twitter-api-client": "^1.3.8"
+  }
+}
