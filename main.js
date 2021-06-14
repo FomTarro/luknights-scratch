@@ -38,7 +38,7 @@ async function main(){
     const data = await twitterClient.accountsAndUsers.usersLookup({ screen_name: chunk });
     data.forEach(entry => {
       input.filter(element => element.signature.toUpperCase() == `@${entry.screen_name}`.toUpperCase()).forEach(match => {
-        match.imageUrl = entry.profile_image_url_https;
+        match.imageUrl = entry.profile_image_url_https.replace('_normal', '_mini');
       });
     });
   }
