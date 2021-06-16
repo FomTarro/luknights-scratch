@@ -1,5 +1,7 @@
 const { TwitterClient } = require('twitter-api-client');
 const fs = require('fs');
+const path = require('path');
+const https = require('https')
 require('dotenv').config();
 
 // these need to be gqthered from the Twitter Developer Portal and put in your own .env file
@@ -38,7 +40,12 @@ async function main(){
     const data = await twitterClient.accountsAndUsers.usersLookup({ screen_name: chunk });
     data.forEach(entry => {
       input.filter(element => element.signature.toUpperCase() == `@${entry.screen_name}`.toUpperCase()).forEach(match => {
-        match.imageUrl = entry.profile_image_url_https.replace('_normal', '_mini');
+        const filePath = path.join('images', 'avatars', `${entry.screen_name}.jpg`)
+        match.imageUrl = filePath;
+        const file = fs.createWriteStream(filePath);
+        const request = https.get(entry.profile_image_url_https.replace('_normal', '_mini'), function(response) {
+          response.pipe(file);
+        });
       });
     });
   }
